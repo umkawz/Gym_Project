@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Качалочка Beta Version</string>
+    <string name="Search_title">Search</string>
+    <string name="Table">Table</string>
+    <string name="kilin">Kilin_Lox</string>
+    <string name="view_notification_open">Open</string>
+    <string name="view_notification_close">Close</string>
+    <string name="Tab_1_name">День первый</string>
+    <string name="Tab_2_name">День второй</string>
+    <string name="Tab_3_name">День третий</string>
+    <string name="weight">Вес: -- кг</string>
+</resources>
