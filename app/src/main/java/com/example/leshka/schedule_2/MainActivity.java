@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         initToolbar();
         initNavigationViev();
         initTab();
-
     }
 
     private void initToolbar() {

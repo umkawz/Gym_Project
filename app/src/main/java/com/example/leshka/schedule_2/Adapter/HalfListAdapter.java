@@ -17,7 +17,8 @@ import java.util.List;
  * Created by Leshka on 5/17/2017.
  */
 
-public class HalfListAdapter extends RecyclerView.Adapter<HalfListAdapter.HalfViewHolder> implements View.OnClickListener{
+public class HalfListAdapter extends RecyclerView.Adapter<HalfListAdapter.HalfViewHolder>{
+
 
     private List <HalfDTO> data;
 
@@ -33,12 +34,13 @@ public class HalfListAdapter extends RecyclerView.Adapter<HalfListAdapter.HalfVi
     }
 
     @Override
-    public void onBindViewHolder(final HalfViewHolder holder, int position) {
+    public void onBindViewHolder(final HalfViewHolder holder, final int position) {
         holder.title.setText(data.get(position).getTitle());
         holder.title.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 Log.d("1",String.valueOf(holder.title.getText()));
-                //Log.d("TAG", "НАЖАТО");
+                Log.d("1",String.valueOf(holder.getAdapterPosition()));
+//                Dialog di = new Dialog();
             }
         });
     }
@@ -46,11 +48,6 @@ public class HalfListAdapter extends RecyclerView.Adapter<HalfListAdapter.HalfVi
     @Override
     public int getItemCount() {
         return data.size();
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 
     public static class HalfViewHolder extends RecyclerView.ViewHolder {

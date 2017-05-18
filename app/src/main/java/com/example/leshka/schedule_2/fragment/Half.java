@@ -51,7 +51,6 @@ public class Half extends AbstractTabFragment {
         data.add(new HalfDTO("3 - Разводка лёжа"));
         data.add(new HalfDTO("4 - Тяга блока к низу"));
         data.add(new HalfDTO("5 - Pull-over"));
-
         return data;
     }
 
