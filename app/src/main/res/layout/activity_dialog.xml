@@ -48,14 +48,18 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:text="@string/yes">
+            android:text="@string/yes"
+            android:gravity="center"
+            >
         </Button>
         <Button
             android:id="@+id/btnNo"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:text="@string/no">
+            android:text="@string/no"
+            android:gravity="center"
+            >
         </Button>
     </LinearLayout>
 </LinearLayout>
