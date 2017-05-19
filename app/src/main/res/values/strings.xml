@@ -10,4 +10,8 @@
     <string name="Tab_3_name">День третий</string>
     <string name="weight">Вес: -- кг</string>
     <string name="fragment_example_text">Hefdfddsaa</string>
+    <string name="reduce">-</string>
+    <string name="add">+</string>
+    <string name="yes">Ok</string>
+    <string name="no">Cancel</string> />
 </resources>

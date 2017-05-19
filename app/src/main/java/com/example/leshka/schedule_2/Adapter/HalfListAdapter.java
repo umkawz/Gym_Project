@@ -2,11 +2,10 @@ package com.example.leshka.schedule_2.Adapter;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.leshka.schedule_2.R;
 import com.example.leshka.schedule_2.dto.HalfDTO;
@@ -21,28 +20,29 @@ public class HalfListAdapter extends RecyclerView.Adapter<HalfListAdapter.HalfVi
 
 
     private List <HalfDTO> data;
+    private final HalfListAdapterCallback listener;
 
-    public HalfListAdapter(List<HalfDTO> data) {
+    public HalfListAdapter(List<HalfDTO> data, HalfListAdapterCallback listener) {
         this.data = data;
+        this.listener = listener;
     }
 
     @Override
     public HalfViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.half_item, parent, false);
 
-        return new HalfViewHolder(view);
+        return new HalfViewHolder(view, listener);
     }
 
     @Override
     public void onBindViewHolder(final HalfViewHolder holder, final int position) {
         holder.title.setText(data.get(position).getTitle());
-        holder.title.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Log.d("1",String.valueOf(holder.title.getText()));
-                Log.d("1",String.valueOf(holder.getAdapterPosition()));
-//                Dialog di = new Dialog();
-            }
-        });
+//        holder.title.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View v){
+//                Log.d("1",String.valueOf(holder.title.getText()));
+//                Log.d("1",String.valueOf(holder.getAdapterPosition()));
+//            }
+//        });
     }
 
     @Override
@@ -50,17 +50,32 @@ public class HalfListAdapter extends RecyclerView.Adapter<HalfListAdapter.HalfVi
         return data.size();
     }
 
-    public static class HalfViewHolder extends RecyclerView.ViewHolder {
+    public static class HalfViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public CardView cardView;
-        public Button title;
+        public TextView title;
 
-        public HalfViewHolder(View itemView) {
+        private final HalfListAdapterCallback listener;
+
+        public HalfViewHolder(View itemView, HalfListAdapterCallback listener) {
             super(itemView);
 
             cardView = (CardView) itemView.findViewById(R.id.cardView);
-            title = (Button)itemView.findViewById(R.id.title);
+            title = (TextView)itemView.findViewById(R.id.title);
+
+            this.listener = listener;
+            this.itemView.setOnClickListener(this);
         }
 
 
+        @Override
+        public void onClick(View v) {
+            listener.onItemClick(getAdapterPosition(), String.valueOf(title.getText()));
+        }
     }
+
+    public interface HalfListAdapterCallback {
+        void onItemClick(int pos, String str);
+    }
+
+
 }

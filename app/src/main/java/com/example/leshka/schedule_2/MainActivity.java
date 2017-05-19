@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         initToolbar();
         initNavigationViev();
         initTab();
+
+//        DialogFragment dlg1;
+//        dlg1 = new Dialog();
+//        dlg1.show(getFragmentManager(), "dl");
     }
 
     private void initToolbar() {
