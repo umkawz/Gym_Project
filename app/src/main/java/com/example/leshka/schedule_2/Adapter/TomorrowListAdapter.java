@@ -18,23 +18,28 @@ import java.util.List;
 
 public class TomorrowListAdapter extends RecyclerView.Adapter<TomorrowListAdapter.TomorrowViewHolder>{
 
-    private List <TomorrowDTO> data;
 
-    public TomorrowListAdapter(List<TomorrowDTO> data) {
+    private List <TomorrowDTO> data;
+    private final TomorrowListAdapterCallback listener;
+
+
+
+    public TomorrowListAdapter(List<TomorrowDTO> data, TomorrowListAdapterCallback listener) {
         this.data = data;
+        this.listener = listener;
     }
 
     @Override
     public TomorrowViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tomorrow_item, parent, false);
 
-        return new TomorrowViewHolder(view);
+        return new TomorrowViewHolder(view, listener);
     }
 
     @Override
-    public void onBindViewHolder(TomorrowViewHolder holder, int position) {
+    public void onBindViewHolder(final TomorrowViewHolder holder, final int position) {
         holder.title.setText(data.get(position).getTitle());
-
+        holder.text_weight.setText((data.get(position).getWeight()));
     }
 
     @Override
@@ -42,17 +47,34 @@ public class TomorrowListAdapter extends RecyclerView.Adapter<TomorrowListAdapte
         return data.size();
     }
 
-    public static class TomorrowViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
-        TextView title;
+    public static class TomorrowViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        public CardView cardView;
+        public TextView title;
+        public TextView text_weight;
 
-        public TomorrowViewHolder(View itemView) {
+        private final TomorrowListAdapterCallback listener;
+
+        public TomorrowViewHolder(View itemView, TomorrowListAdapterCallback listener) {
             super(itemView);
 
-            cardView = (CardView) itemView.findViewById(R.id.cardViewTomorrow);
-            title = (TextView)itemView.findViewById(R.id.titleTomorrow);
+            cardView = (CardView) itemView.findViewById(R.id.cardView_Tomorrow);
+            title = (TextView)itemView.findViewById(R.id.title_Tomorrow);
+            text_weight = (TextView)itemView.findViewById(R.id.text_weight_Tomorrow);
+
+            this.listener = listener;
+            this.itemView.setOnClickListener(this);
         }
 
 
+        @Override
+        public void onClick(View v) {
+            listener.onItemClick(getAdapterPosition(), String.valueOf(title.getText()));
+        }
     }
+
+    public interface TomorrowListAdapterCallback {
+        void onItemClick(int pos, String str);
+    }
+
+
 }

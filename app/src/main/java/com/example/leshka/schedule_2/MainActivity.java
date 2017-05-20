@@ -83,7 +83,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void showNotificationTab(){
+        int tab;
+        tab = viewPager.getCurrentItem();
         initTab();
+        viewPager.setCurrentItem(tab);
 
     }
 }
