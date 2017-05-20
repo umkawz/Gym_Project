@@ -44,7 +44,7 @@ public class Dialog extends DialogFragment implements View.OnClickListener {
         else {
             SharedPreferences.Editor e = sPref.edit();
             e.putString(str, "66");
-            e.commit();
+            e.apply();
         }
         return sPref.getString(str, "");
     }
@@ -55,27 +55,28 @@ public class Dialog extends DialogFragment implements View.OnClickListener {
         SharedPreferences.Editor e = sPref.edit();
         Log.d("1",value);
         e.putString(tag, value);
-        e.commit();
+        e.apply();
     }
 
     public void onClick(View v) {
-        int mass = Integer.valueOf(dialog_text.getText().toString());;
+        int mass = Integer.valueOf(dialog_text.getText().toString());
+        int mass2= mass;
         switch (v.getId()){
             case R.id.reduce:
                 if(mass>0){
                     mass--;
-                    setPref(inputBundle.getString("1"), String.valueOf(mass));
+                    //setPref(inputBundle.getString("1"), String.valueOf(mass));
                     dialog_text.setText(String.valueOf(mass));
                 }
                 break;
             case R.id.add_num:
                 mass++;
-                setPref(inputBundle.getString("1"), String.valueOf(mass));
+                //setPref(inputBundle.getString("1"), String.valueOf(mass));
                 dialog_text.setText(String.valueOf(mass));
                 break;
             case R.id.btnYes:
                 Log.d(LOG_TAG, "Dialog 1: " + ((Button) v).getText());
-                setPref(inputBundle.getString("1"), String.valueOf(mass));
+                setPref(inputBundle.getString("1"), String.valueOf(mass2));
                 dismiss();
                 break;
             case R.id.btnNo:
