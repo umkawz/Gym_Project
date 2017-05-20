@@ -7,9 +7,19 @@ package com.example.leshka.schedule_2.dto;
 public class HalfDTO {
 
     private String title;
+    private String weight;
 
-    public HalfDTO(String title) {
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public HalfDTO(String title, String weight) {
         this.title = title;
+        this.weight = weight;
     }
 
     public String getTitle() {

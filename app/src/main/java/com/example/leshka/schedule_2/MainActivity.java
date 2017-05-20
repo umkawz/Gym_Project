@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         TabsFragmentAdapter adapter = new TabsFragmentAdapter(this, getSupportFragmentManager());
-
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
@@ -81,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     private void showNotificationTab(){
-        viewPager.setCurrentItem(Constants.TAB_TWO);
+        initTab();
+
     }
 }

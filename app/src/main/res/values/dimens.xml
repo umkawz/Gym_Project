@@ -3,4 +3,5 @@
 
     <dimen name="size">10dp</dimen>
     <dimen name="waight_padding">5dp</dimen>
+    <dimen name="weight_header">3dp</dimen>
 </resources>

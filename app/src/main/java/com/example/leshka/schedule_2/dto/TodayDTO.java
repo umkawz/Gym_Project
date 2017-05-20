@@ -7,9 +7,15 @@ package com.example.leshka.schedule_2.dto;
 public class TodayDTO {
 
     private String title;
+    private String weight;
 
     public TodayDTO(String title) {
         this.title = title;
+    }
+
+    public TodayDTO(String title, String weight) {
+        this.title = title;
+        this.weight = weight;
     }
 
     public String getTitle() {
@@ -18,5 +24,9 @@ public class TodayDTO {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getWeight() {
+        return weight;
     }
 }

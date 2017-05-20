@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Качалочка Beta Version</string>
     <string name="Search_title">Search</string>
-    <string name="Table">Table</string>
+    <string name="Table">Обновить</string>
     <string name="kilin">Kilin_Lox</string>
     <string name="view_notification_open">Open</string>
     <string name="view_notification_close">Close</string>

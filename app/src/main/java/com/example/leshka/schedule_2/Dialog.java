@@ -43,7 +43,7 @@ public class Dialog extends DialogFragment implements View.OnClickListener {
         }
         else {
             SharedPreferences.Editor e = sPref.edit();
-            e.putString(str, "50");
+            e.putString(str, "66");
             e.commit();
         }
         return sPref.getString(str, "");
@@ -53,34 +53,35 @@ public class Dialog extends DialogFragment implements View.OnClickListener {
         SharedPreferences sPref;
         sPref = getActivity().getSharedPreferences("Gym_file", MODE_PRIVATE);
         SharedPreferences.Editor e = sPref.edit();
+        Log.d("1",value);
         e.putString(tag, value);
         e.commit();
     }
 
     public void onClick(View v) {
-        int mass = 0;
+        int mass = Integer.valueOf(dialog_text.getText().toString());;
         switch (v.getId()){
             case R.id.reduce:
-                mass = Integer.valueOf(dialog_text.getText().toString());
                 if(mass>0){
                     mass--;
-                    //setPref(inputBundle.getString("1"), String.valueOf(mass));
+                    setPref(inputBundle.getString("1"), String.valueOf(mass));
                     dialog_text.setText(String.valueOf(mass));
                 }
                 break;
             case R.id.add_num:
-                mass = Integer.valueOf(dialog_text.getText().toString());
                 mass++;
-                //setPref(inputBundle.getString("1"), String.valueOf(mass));
+                setPref(inputBundle.getString("1"), String.valueOf(mass));
                 dialog_text.setText(String.valueOf(mass));
                 break;
             case R.id.btnYes:
                 Log.d(LOG_TAG, "Dialog 1: " + ((Button) v).getText());
                 setPref(inputBundle.getString("1"), String.valueOf(mass));
                 dismiss();
+                break;
             case R.id.btnNo:
                 Log.d(LOG_TAG, "Dialog 1: " + ((Button) v).getText());
                 dismiss();
+                break;
 
         }
     }

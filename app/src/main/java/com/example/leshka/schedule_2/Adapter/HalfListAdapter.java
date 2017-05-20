@@ -22,6 +22,8 @@ public class HalfListAdapter extends RecyclerView.Adapter<HalfListAdapter.HalfVi
     private List <HalfDTO> data;
     private final HalfListAdapterCallback listener;
 
+
+
     public HalfListAdapter(List<HalfDTO> data, HalfListAdapterCallback listener) {
         this.data = data;
         this.listener = listener;
@@ -37,6 +39,7 @@ public class HalfListAdapter extends RecyclerView.Adapter<HalfListAdapter.HalfVi
     @Override
     public void onBindViewHolder(final HalfViewHolder holder, final int position) {
         holder.title.setText(data.get(position).getTitle());
+        holder.text_weight.setText((data.get(position).getWeight()));
 //        holder.title.setOnClickListener(new View.OnClickListener(){
 //            public void onClick(View v){
 //                Log.d("1",String.valueOf(holder.title.getText()));
@@ -53,6 +56,7 @@ public class HalfListAdapter extends RecyclerView.Adapter<HalfListAdapter.HalfVi
     public static class HalfViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public CardView cardView;
         public TextView title;
+        public TextView text_weight;
 
         private final HalfListAdapterCallback listener;
 
@@ -61,6 +65,7 @@ public class HalfListAdapter extends RecyclerView.Adapter<HalfListAdapter.HalfVi
 
             cardView = (CardView) itemView.findViewById(R.id.cardView);
             title = (TextView)itemView.findViewById(R.id.title);
+            text_weight = (TextView)itemView.findViewById(R.id.text_weight);
 
             this.listener = listener;
             this.itemView.setOnClickListener(this);
